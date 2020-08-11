@@ -7,7 +7,7 @@ export class EventEmitter {
     if (!this._listeners.has(type)) {
       this._listeners.set(type, new Set())
     }
-    this.listener.get(type).add(listener)
+    this._listeners.get(type).add(listener)
   }
 
   emit(type) {
