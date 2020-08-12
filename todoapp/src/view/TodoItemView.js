@@ -2,28 +2,28 @@ import {element} from './html-util.js'
 
 export class TodoItemView {
   createElement(todoItem, {onUpdateTodo, onDeleteTodo}) {
-    const todoItemElement = item.completed
+    const todoItemElement = todoItem.completed
       ? element`
           <li>
             <input type="checkbox" class="checkbox" checked />
-            <s>${item.title}</s>
+            <s>${todoItem.title}</s>
             <button class="delete">x</button>
           </li>`
       : element`
           <li>
             <input type="checkbox" class="checkbox" />
-            ${item.title}
+            ${todoItem.title}
             <button class="delete">x</button>
           </li>`
       
     const inputCheckElement = todoItemElement.querySelector('.checkbox')
     inputCheckElement.addEventListener('change', () => {
-      onUpdateTodo({id: item.id, completed: !item.completed})
+      onUpdateTodo({id: todoItem.id, completed: !todoItem.completed})
     })
 
     const deleteButtonElement = todoItemElement.querySelector('.delete')
     deleteButtonElement.addEventListener('click', () => {
-      onDeleteTodo({id: item.id})
+      onDeleteTodo({id: todoItem.id})
     })
 
     return todoItemElement
